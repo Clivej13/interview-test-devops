@@ -1,0 +1,2 @@
+- Please add a valid set of keys and bucket name on lines 6 - 8 of the logs3.py file.
+- Then run vagrant up. 

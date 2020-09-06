@@ -1,0 +1,2 @@
+- Please run vagrant up
+- Then visit http://192.168.33.14/ for the web app. 
