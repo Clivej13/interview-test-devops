@@ -64,6 +64,8 @@ Vagrant.configure("2") do |config|
   # Ansible, Chef, Docker, Puppet and Salt are also available. Please see the
   # documentation for more information about their specific syntax and use.
    config.vm.provision "file", source: "terraformScripts/main.tf", destination: "/tmp/main.tf"
+   config.vm.provision "file", source: "terraformScripts/outputs.tf", destination: "/tmp/outputs.tf"
+   config.vm.provision "file", source: "terraformScripts/variables.tf", destination: "/tmp/variables.tf"
    
    
    config.vm.provision "shell", inline: <<-SHELL
@@ -76,10 +78,10 @@ Vagrant.configure("2") do |config|
 	 sudo rm terraform_0.13.3_linux_amd64.zip
 	 sudo rm postinstall.sh
 	 sudo mv /tmp/main.tf /home/vagrant/main.tf
+	 sudo mv /tmp/outputs.tf /home/vagrant/outputs.tf
+	 sudo mv /tmp/variables.tf /home/vagrant/variables.tf
 	 export AWS_ACCESS_KEY_ID=
 	 export AWS_SECRET_ACCESS_KEY=
-	 echo $AWS_ACCESS_KEY_ID >> ~/.profile
-	 echo $AWS_SECRET_ACCESS_KEY >> ~/.profile
 	 terraform init
 	 terraform plan -var "server_port=8080"
 	 terraform apply -auto-approve
